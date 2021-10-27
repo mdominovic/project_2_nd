@@ -20,7 +20,7 @@ variables:
   environmentName: 'flaskml1337'
 
   # Project root folder. Point to the folder containing manage.py file.
-  projectRoot: $(System.DefaultWorkingDirectory)
+  projectRoot: '$(System.DefaultWorkingDirectory)/flask-sklearn'
 
   # Python version: 3.7
   pythonVersion: '3.7'
@@ -39,7 +39,6 @@ stages:
       displayName: 'Use Python $(pythonVersion)'
 
     - script: |
-        cd flask-sklearn
         python -m venv antenv
         source antenv/bin/activate
         python -m pip install --upgrade pip
