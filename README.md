@@ -1,31 +1,21 @@
 [![Python application test with Github Actions](https://github.com/mdominovic/project_2_nd/actions/workflows/pythonapp.yml/badge.svg?branch=master)](https://github.com/mdominovic/project_2_nd/actions/workflows/pythonapp.yml)
 
-# project_2_nd
-Udacity Azure DevOps Nano Degree
+Udacity Azure DevOps Nano Degree - Building CI/CD pipeline
+
 
 # Overview
 
-This project contains minor project code which is tested, linted and deployed using CI and CD practices. Actually, there are two parts of a project, one part is in root directory and another part is in flask-sklearn directory.
+This project contains minor project code which is tested, linted and deployed using CI and CD practices.
+Github Actions is taking care of linting and testing, while Makefile helps with automation of commands needed to execute these tasks.
+Azure Pipelines is used for deployment of application to Azure App Services.
 
-Code in root of repository is covered with GitHub Actions which installs all dependecies, lints and tests code. On every push these steps run.
+You can check deployed application here:
+ * https://flaskml1337.azurewebsites.net/
 
-Code in flask-sklearn is covered with Azure Pipelines. This code is also deployed on Azure as webapp. You can check is if works on this link: https://flaskml1337.azurewebsites.net/.
 
-CI and CD will be discussed in next chapters.
 
-___________________________________________________________________________________________
-
-# Overview
-
-This project contains minor project code which is tested, linted and deployed using CI and CD practices. Actually, there are two parts of a project, one part is in root directory and another part is in flask-sklearn directory.
-
-Code in root of repository is covered with GitHub Actions which installs all dependecies, lints and tests code. On every push these steps run.
-
-Code in flask-sklearn is covered with Azure Pipelines. This code is also deployed on Azure as webapp. You can check is if works on this link: https://flaskml1337.azurewebsites.net/.
-
-CI and CD will be discussed in next chapters.
 ## Project Plan
-<TODO: Project Plan
+Below you can find example project plan for this project throughout a year for every quarter as if project is not finished.
 
 * A link to a Trello board for the project
 * A link to a spreadsheet that includes the original and final project plan>
@@ -35,7 +25,30 @@ CI and CD will be discussed in next chapters.
 <TODO:
 * Architectural Diagram (Shows how key parts of the system work)>
 
+To make all of this work, next steps should be followed:
+ * create github repository
+ * launch Azure Cloud Shell and create ssh key with command: `ssh-keygen`
+ * get content of generated file: `cat /home/<username>/.ssh/id_rsa.pub`
+ * copy generated key and add it to your github account
+ * clone created repository
+ * create project scaffolding, this repository contains files for it
+ * run make all to install dependencies and build the app
+ * enable github actions for repository and add this code to workflow: .github\workflows\pythonapp.yml
+ * create Azure App Service: `az webapp up --sku B1 -n <project_name>`
+
+ TODO: IMG
+
+ * setup Azure DevOps - go to https://dev.azure.com and sign in
+ * create a new private project
+ * under Project Settings create a new service connection and select Azure Resource Manager
+ * create a  python specific pipeline to deploy to App Service, and link it to your GitHub repository
+ * check logs of running app: `az webapp log tail --name <project_name> --resource-group <resource_group_name>`
+ * test if app works: `./make_predict_azure_app.sh`
+ TODO: add image output and website
+
+
 <TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
+
 
 * Project running on Azure App Service
 
@@ -43,11 +56,15 @@ CI and CD will be discussed in next chapters.
 
 * Passing tests that are displayed after running the `make all` command from the `Makefile`
 
+* Example of failing test
+
 * Output of a test run
 
 * Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
 
 * Running Azure App Service from Azure Pipelines automatic deployment
+
+* Locust run
 
 * Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
 The output should look similar to this:
@@ -64,7 +81,8 @@ Port: 443
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+* adding more pipelines for different branches, ex. development, production, testing
+* adding alerting in slack or teams when build fails
 
 ## Demo 
 
