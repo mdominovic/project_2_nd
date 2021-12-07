@@ -34,9 +34,9 @@ To make all of this work, next steps should be followed:
  * create project scaffolding, this repository contains files for it
  * run make all to install dependencies and build the app
  * enable github actions for repository and add this code to workflow: .github\workflows\pythonapp.yml
- * create Azure App Service: `az webapp up --sku B1 -n <project_name>`
+ * create Azure App Service: `az webapp up --sku B1 -n <project_name> --resource-group <resource_group_name>`
 
- TODO: IMG
+ ![created_azure_app_service](screenshots\create_azure_app_service_ss1.PNG)
 
  * setup Azure DevOps - go to https://dev.azure.com and sign in
  * create a new private project
