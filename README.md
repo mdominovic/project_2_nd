@@ -10,7 +10,7 @@ Github Actions is taking care of linting and testing, while Makefile helps with 
 Azure Pipelines is used for deployment of application to Azure App Services.
 
 You can check deployed application here:
- * https://flaskml1337.azurewebsites.net/
+ * https://build-ci-cd-mislav.azurewebsites.net/
 
 
 
@@ -96,8 +96,8 @@ Port: 443
 * adding more pipelines for different branches, ex. development, production, testing
 * adding alerting in slack or teams when build fails
 
-## Demo 
+## Demo
 
-<TODO: Add link Screencast on YouTube>
+https://youtu.be/1AZX0W2Onts
 
 
